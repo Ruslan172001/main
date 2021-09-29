@@ -1,8 +1,6 @@
 const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
-/* Плюс позволяет конвертировать строку в число */
 
-/* объект personalMovieDB */
-const MovieDB = {
+const personalMovieDB = {
     count: numberOfFilms,
     movies: {},
     actors: {},
@@ -10,13 +8,27 @@ const MovieDB = {
     private: false
 };
 
-const a = prompt("Один из последних просмотренных фильмов?"),
-      b = prompt("На сколько оцените его?"), 
-      c = prompt("Один из последних просмотренных фильмов?"),
-      d = prompt("На сколько оцените его?");
+for (let i = 0; i < 2; i++) {
+    const a = prompt('Один из последних просмотренных фильмов?'),
+          b = prompt('На сколько оцените его?');   
+    if(a != '' && b != '' && a != null && b != null && a.length < 50) {
+        personalMovieDB.movies[a] = b; 
+        console.log('done');
+    }
+    else{
+        console.log('error');
+    
+    }
+}
 
-//Добавление свойств в объект через квадратные скобки 
-MovieDB.movies[a] = b;
-MovieDB.movies[c] = d;
+if (personalMovieDB.count < 10) {
+    console.log('Просмотрено довольно мало фильмов');
+} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+        console.log('Вы классический зритель');
+} else if (personalMovieDB.count > 30) {
+        console.log('Вы киноман');
+} else {
+        console.log('Произошла ошибка');
+}
 
-console.log(MovieDB);
+console.log(personalMovieDB);
